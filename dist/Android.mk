@@ -56,6 +56,11 @@ LOCAL_SHARED_LIBRARIES += liblog \
 # include android specific methods
 LOCAL_WHOLE_STATIC_LIBRARIES := libsqlite3_android
 
+ifeq ($(WITH_QC_PERF),true)
+LOCAL_WHOLE_STATIC_LIBRARIES += libqc-sqlite
+LOCAL_SHARED_LIBRARIES += libcutils
+endif
+
 include $(BUILD_SHARED_LIBRARY)
 
 ifeq ($(WITH_HOST_DALVIK),true)
